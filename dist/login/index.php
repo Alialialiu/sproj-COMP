@@ -33,19 +33,19 @@ require_once '../../database/connect.php'
 
                <!-- login username -->
                <div class="form-floating mb-3">
-                  <input type="text" class="form-control" name="login_username" placeholder="sample_username" required>
+                  <input type="text" class="form-control" id="login_username" name="login_username" placeholder="sample_username" required>
                   <label for="login_username">Username</label>
                </div>
 
                <!-- login password -->
                <div class="form-floating">
-                  <input type="password" class="form-control" name="login_password" placeholder="Password" required>
+                  <input type="password" class="form-control" id="login_password" name="login_password" placeholder="Password" required>
                   <label for="login_password">Password</label>
                </div>
 
                <!-- form controls -->
                <div class="d-flex flex-column w-100 mt-4 gap-2">
-                  <button type="submit" class="btn btn-primary text-uppercase">login</button>
+                  <button type="submit" id="login_btn" class="btn btn-primary text-uppercase" disabled>login</button>
                   <button type="button" class="switch btn btn-outline-secondary text-uppercase">register</button>
                </div>
 
@@ -60,43 +60,43 @@ require_once '../../database/connect.php'
                <!-- register name -->
                <div class="d-flex gap-3 mb-3 w-100">
                   <div class="form-floating w-50">
-                     <input type="text" class="form-control" name="register_fname" placeholder="sample_fname" required>
+                     <input type="text" class="form-control" id="register_fname" name="register_fname" placeholder="sample_fname" required>
                      <label for="register_fname">First name</label>
                   </div>
 
                   <div class="form-floating w-50">
-                     <input type="text" class="form-control" name="register_lname" placeholder="sample_lname" required>
+                     <input type="text" class="form-control" id="register_lname" name="register_lname" placeholder="sample_lname" required>
                      <label for="register_lname">Last name</label>
                   </div>
                </div>
 
                <!-- register address -->
                <div class="form-floating mb-3">
-                  <input type="text" class="form-control" name="register_address" placeholder="sample_address" required>
+                  <input type="text" class="form-control" id="register_address" name="register_address" placeholder="sample_address" required>
                   <label for="register_address">Address</label>
                </div>
 
                <!-- register username -->
                <div class="form-floating mb-3">
-                  <input type="text" class="form-control" name="register_username" placeholder="sample_username" required>
+                  <input type="text" class="form-control" id="register_username" name="register_username" placeholder="sample_username" required>
                   <label for="register_username">Username</label>
                </div>
 
                <!-- register password -->
                <div class="form-floating mb-3">
-                  <input type="password" class="form-control" name="register_password" placeholder="Password" required>
+                  <input type="password" class="form-control" id="register_password" name="register_password" placeholder="Password" required>
                   <label for="register_password">Password</label>
                </div>
 
                <!-- register confirm password -->
                <div class="form-floating">
-                  <input type="password" class="form-control" name="register_repassword" placeholder="Password" required>
+                  <input type="password" class="form-control" id="register_repassword" name="register_repassword" name="register_repassword" placeholder="Password" required>
                   <label for="register_repassword">Confirm password</label>
                </div>
 
                <!-- form controls -->
                <div class="d-flex flex-column w-100 mt-4 gap-2">
-                  <button type="submit" class="btn btn-primary text-uppercase">register</button>
+                  <button type="submit" id="register_btn" class="btn btn-primary text-uppercase" disabled>register</button>
                   <button type="button" class="switch btn btn-outline-secondary text-uppercase">login</button>
                </div>
 
