@@ -15,7 +15,7 @@ $(document).ready(function(){
                     $('#error-msg').fadeOut();
                 },5000);
             }
-            $('#form2')[0].reset();
+            
         },"json");
     });
 });

@@ -10,12 +10,12 @@ $conn = mysqli_connect('localhost', 'root', '', 'complain');
     <link rel="stylesheet" href="style/index.css">
     <link rel="stylesheet" href="style/forms.css">
     <!-- bootstrap -->
-    <link href="../bootstrap/animate.css" rel="stylesheet">
-    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../bootstrap/animate.css" rel="stylesheet">
+    <link href="bootstrap/animate.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap/animate.css" rel="stylesheet">
     <!-- fonts -->
-    <script src="../bootstrap/jquery.js"></script>
+    <script src="bootstrap/jquery.js"></script>
     <title>index</title>
 </head>
 <script src="jquery/registration.js"></script>

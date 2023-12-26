@@ -10,10 +10,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- custom -->
-    <link rel="stylesheet" href="./style/index.css">
+    <link rel="stylesheet" href="style/index.css">
     <!-- bootstrap -->
-    <link href="../../src/bootstrap/animate.css" rel="stylesheet">
-    <link href="../../src/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="bootstrap/animate.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
     <title>index</title>
 </head>
 <body>

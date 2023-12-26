@@ -9,7 +9,7 @@ $addr = mysqli_real_escape_string($conn, $_POST['address']);
 $username = mysqli_real_escape_string($conn, $_POST['username']);
 $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash the password for security
 
-$checkQuery = "SELECT * FROM user WHERE username = '$username'";
+$checkQuery = "SELECT * FROM tb_user WHERE username = '$username'";
 $checkResult = $conn->query($checkQuery);
 
 if ($checkResult->num_rows > 0) {
@@ -23,7 +23,7 @@ if ($checkResult->num_rows > 0) {
 
 } else {
     // Username is not taken, proceed with the insertion
-    $insertQuery = "INSERT INTO user (firstname, lastname, gender, gmail, address, username, password)
+    $insertQuery = "INSERT INTO tb_user (firstname, lastname, gender, gmail, address, username, password)
         VALUES ('$firstname', '$lastname','$gender', '$email', '$addr', '$username', '$password')";
 
     if ($conn->query($insertQuery) === TRUE) {

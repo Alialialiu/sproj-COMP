@@ -7,7 +7,7 @@ if (!$conn) {
 $username = mysqli_real_escape_string($conn, $_POST['username']);
 $password = $_POST['password'];
 
-$checkQuery = "SELECT user_id, username, password FROM user WHERE username = '$username'";
+$checkQuery = "SELECT user_id, username, password FROM tb_user WHERE username = '$username'";
 $checkResult = $conn->query($checkQuery);
 
 if ($checkResult->num_rows === 1) {
