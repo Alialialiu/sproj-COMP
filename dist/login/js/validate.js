@@ -1,6 +1,7 @@
 $(document).ready(function(){
-    $('#form-logn').submit(function(e){
+    $('#login_form').submit(function(e){
         e.preventDefault();
+        alert();
         var url ="php/validate.php";
         var data = $(this).serialize();
         

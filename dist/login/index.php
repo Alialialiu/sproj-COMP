@@ -14,6 +14,8 @@ require_once '../../database/connect.php'
    <link href="../../src/bootstrap/css/bootstrap.css" rel="stylesheet">
 
    <script src="../../src/jquery.js"></script>
+   <script src="js/registration.js"></script>
+   <script src="js/validate.js"></script>
    <title>index</title>
 </head>
 
