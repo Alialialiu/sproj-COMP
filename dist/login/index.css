@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
+/* import this whenever you make a css file */
+@import url("../../src/global.css");
+
+* {
+   font-family: "Lato", sans-serif;
+}
+
+.main-form {
+   width: 100vw;
+   height: 100vh;
+   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url("./images/form-bg.jpg");
+}
+.form-cont {
+   background-color: var(--clr-light);
+}
