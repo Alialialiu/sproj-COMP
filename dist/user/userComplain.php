@@ -13,10 +13,11 @@
     <link href="bootstrap/animate.css" rel="stylesheet">
     <!-- fonts -->
     <script src="bootstrap/jquery.js"></script>
+    <script src="jquery/usercomp.js"></script>
    
 </head>
 <body> 
-    <script src="jquery/usercomp/usercomp.js"></script>
+    
     <div class="usercompmain">
         <div class="usercompform">
             <div class="usercomptitle mt-5"><h4>What is your Complain?</h4></div>

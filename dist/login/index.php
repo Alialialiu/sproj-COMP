@@ -38,7 +38,7 @@ require_once '../../database/connect.php'
                   <input type="text" class="form-control" id="login_username" name="login_username" placeholder="sample_username" required>
                   <label for="login_username">Username</label>
                </div>
-
+      
                <!-- login password -->
                <div class="form-floating">
                   <input type="password" class="form-control" id="login_password" name="login_password" placeholder="Password" required>
