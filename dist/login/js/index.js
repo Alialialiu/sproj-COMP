@@ -103,18 +103,6 @@ $(document).ready(function () {
             register_repassInput_hasVal,
          "#register_btn"
       );
-      // if (
-      //    register_fnameInput_hasVal &&
-      //    register_lnameInput_hasVal &&
-      //    register_addressInput_hasVal &&
-      //    register_userInput_hasVal &&
-      //    register_passInput_hasVal &&
-      //    register_repassInput_hasVal
-      // ) {
-      //    $("#register_btn").removeAttr("disabled");
-      // } else {
-      //    $("#register_btn").attr("disabled", "");
-      // }
    });
    $("#register_address").on("input", function () {
       if ($(this).val().length > 2) {

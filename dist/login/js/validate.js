@@ -1,22 +1,20 @@
-$(document).ready(function(){
-    $('#login_form').submit(function(e){
-        e.preventDefault();
-        alert();
-        var url ="php/validate.php";
-        var data = $(this).serialize();
-        
-        $.post(url, data, function(response){
-            console.log(response);
+$(document).ready(function () {
+   $("#login_form").submit(function (e) {
+      e.preventDefault();
+      var url = "php/validate.php";
+      var data = $(this).serialize();
+
+      $.post(
+         url,
+         data,
+         function (response) {
             if (response.success) {
-                // Redirect to the dashboard page
-                window.location.href = response.redirect;
-            } else {             
-                $('#error-msg').text(response.message).fadeIn();
-                setTimeout(() =>{
-                    $('#error-msg').fadeOut();
-                },5000);
+               window.location.href = response.redirect;
+            } else if (!response.success) {
+               alert(response.message);
             }
-            
-        },"json");
-    });
+         },
+         "json"
+      );
+   });
 });

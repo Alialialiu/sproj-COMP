@@ -1,0 +1,10 @@
+body {
+   width: 100svw !important;
+   height: 100svh;
+   padding: 0;
+   width: 0;
+}
+
+.tox-statusbar__branding {
+   visibility: hidden !important;
+}
