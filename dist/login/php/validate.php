@@ -1,12 +1,13 @@
 <?php
 session_start(); ob_start();
-$conn = mysqli_connect('localhost', 'root', '', 'complain');
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-$username = mysqli_real_escape_string($conn, $_POST['username']);
-$password = $_POST['password'];
 
+include("../../../database/connect.php");
+
+
+$username = mysqli_real_escape_string($conn, $_POST['login_username']);
+$password = $_POST['login_password'];
+
+// Check if the username exists in the database
 $checkQuery = "SELECT user_id, username, password FROM tb_user WHERE username = '$username'";
 $checkResult = $conn->query($checkQuery);
 
@@ -25,7 +26,7 @@ if ($checkResult->num_rows === 1) {
         if ($username === 'admin') {
             $redirect = 'dashboard.php';
         } else {
-            $redirect = 'user/form.php';
+            $redirect = 'userFiles/user-dashboard.php';
         }
 
         $response = array(

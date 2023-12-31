@@ -3,7 +3,7 @@
 $sn = "localhost";
 $dbun = "root";
 $dbp = "";
-$dbn = "db_complain";
+$dbn = "complain";
 
 $conn = mysqli_connect($sn, $dbun, $dbp, $dbn);
 
