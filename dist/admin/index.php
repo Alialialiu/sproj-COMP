@@ -1,3 +1,23 @@
+<?php
+require_once '../../database/connect.php';
+session_start();
+
+if (!isset($_SESSION['user_id']) && $_SESSION['user_type'] !== false) {
+   header("Location: ../login/index.php");
+   session_abort();
+} else {
+   $sessionID = $_SESSION['user_id'];
+}
+$query = $conn->prepare("SELECT firstname FROM tb_user WHERE user_id = ?");
+$query->bind_param("s", $sessionID);
+$query->execute();
+
+$result = $query->get_result();
+$name = $result->fetch_column();
+session_abort();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,90 +25,111 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Admin</title>
-   <!-- custom -->
-   <link rel="stylesheet" href="style/style.css
-   ">
-   <!-- bootstrap -->
-   <link href="css/datatables-bootstrap3.css" rel="stylesheet">
-   <link href="../../src/animate.css" rel="stylesheet">
-   <link href="../../src/bootstrap/css/bootstrap.css" rel="stylesheet">
-   <!-- scripts -->
-   <script src="../../src/jquery.js"></script>
-   <script src="js/index.js"></script>
-   <script src="../../src/jquery.dataTables.js"></script>
-   <script src="../../src/datatables-bootstrap3.js"></script>
-   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+   <!-- plugins css -->
+   <link rel="stylesheet" href="../../src/bootstrap/css/bootstrap.css">
+   <link rel="stylesheet" href="../../src/icons/bootstrap-icons.css">
+   <link rel="stylesheet" href="../../src/datatables/datatables.css">
 
+   <!-- custom css -->
+   <link rel="stylesheet" href="style/style.css">
+
+   <!-- plugins js -->
+   <script src="../../src/jquery.js"></script>
+   <script src="../../src/popper.js"></script>
+   <script src="../../src/bootstrap/js/bootstrap.min.js"></script>
+   <script src="../../src/datatables/datatables.min.css"></script>
 </head>
 
 <body>
-   <div class="adminContainer">
-      <div class="adminCompList">
-         <table id="adminCompTable" class="table table-hover">
-            <thead>
-               <th> Firstname </th>
-               <th> Middlename </th>
-               <th> Lastname </th>
-               <th> Address </th>
-               <th> Email </th>
-               <th> contact </th>
-               <th> Status </th>
-               <th> Complain Category </th>
-               <th> View </th>
+   <section class="w-100 h-100 d-flex">
 
-            </thead>
-            <tbody>
-               <?php
-               include("../../database/connect.php");
-
-               $query = $conn->query("SELECT tb_usercomplain.*, tb_complaintype.comp_name FROM tb_usercomplain INNER JOIN tb_complaintype ON tb_usercomplain.usrcomp_fk = tb_complaintype.comp_id");
-
-
-
-               while ($data = mysqli_fetch_array($query)) {
-               ?>
-                  <tr id="tr_<?php echo $data['usrcomp_id'] ?>">
-                     <td> <?php echo $data['usrcomp_fname'] ?> </td>
-                     <td> <?php echo $data['usrcomp_mname'] ?> </td>
-                     <td> <?php echo $data['usrcomp_lname'] ?> </td>
-                     <td> <?php echo $data['usrcomp_addr'] ?> </td>
-                     <td> <?php echo $data['usrcomp_email'] ?> </td>
-                     <td> <?php echo $data['usrcomp_contact'] ?> </td>
-                     <td> <?php echo $data['usrcomp_status'] ?> </td>
-                     <td> <?php echo $data['comp_name'] ?> </td>
-                     <td>
-                        <button class="tablebtnComp edit" id="<?php echo $data['usrcomp_id'] ?> type=" button" data-bs-toggle="modal" data-bs-target="#editCompModal">
-                           <i class='bx bx-folder-open fs-2'></i>
-                        </button>
-                     </td>
-
-                  </tr>
-               <?php } ?>
-            </tbody>
-         </table>
-      </div>
-   </div>
-   <!-- modals -->
-   <!-- Modal -->
-   <div class="modal fade" id="editCompModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-         <div class="modal-content">
-            <div class="modal-header">
-               <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body userCompBody">
-               ...
-            </div>
-            <div class="modal-footer">
-               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
+      <!-- sidebar -->
+      <div class="d-flex flex-column justify-content-between flex-shrink-0 bg-body-tertiary h-100 shadow" style="width: 4.5rem;">
+         <div>
+            <a href="/" class="d-flex align-items-center justify-content-center p-3 link-body-emphasis text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
+               <i class="bi bi-calendar-range-fill fs-2"></i>
+               <span class="visually-hidden">Icon-only</span>
+            </a>
+            <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+               <li class="nav-item">
+                  <a href="./index.php" class="nav-link active py-3 border-bottom rounded-0" aria-current="page" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Home" data-bs-original-title="Home">
+                     <i class="bi bi-house-door fs-5"></i>
+                  </a>
+               </li>
+               <li>
+                  <a href="./complaintBulletin.php" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Bulletin" data-bs-original-title="Bulletin">
+                     <i class="bi bi-clipboard-data fs-5"></i>
+                  </a>
+               </li>
+               <li>
+                  <a href="./systeminfo.php" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Customize System" data-bs-original-title="Customize System">
+                     <i class="bi bi-gear fs-5"></i>
+                  </a>
+               </li>
+            </ul>
+         </div>
+         <div class="dropdown border-top">
+            <a href="#" class="d-flex align-items-center justify-content-center p-3 link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+               <i class="bi bi-person-circle fs-4"></i>
+            </a>
+            <ul class="dropdown-menu text-small shadow">
+               <li><a class="dropdown-item d-flex align-items-center" href="../../database/logout.php"><i class="bi bi-power me-2"></i>Log out</a></li>
+            </ul>
          </div>
       </div>
-   </div>
-   <!-- scripts -->
-   <script src="../../src/bootstrap/js/bootstrap.js"></script>
-   <script src="../../src/popper.js"></script>
+
+      <!-- content -->
+      <div class="w-100 h-100 overflow-scroll">
+         <div class="container px-1 py-4">
+            <h2 class="pb-2 border-bottom">Home</h2>
+
+            <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
+               <div class="col d-flex flex-column align-items-start gap-2">
+                  <h2 class="fw-bold text-body-emphasis">Welcome <?php echo $name ?></h2>
+                  <p class="text-body-secondary">This is your admin panel. You have full control of the system in here. Navigate to your sidebar to see what else you can do</p>
+                  <a href="./complaintBulletin.php" class="btn btn-primary btn-lg">Complaint Bulltetin</a>
+               </div>
+
+               <div class="col p-3">
+                  <div class="row row-cols-1 row-cols-sm-2 g-4">
+                     <div class="col d-flex flex-column gap-2">
+                        <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3 px-2" style="width: fit-content;">
+                           <i class="bi bi-card-checklist fs-3"></i>
+                        </div>
+                        <h4 class="fw-semibold mb-0 text-body-emphasis">Review complaints</h4>
+                        <p class="text-body-secondary">Navigate to your bulletin list to start reviewing resident complaints</p>
+                     </div>
+
+                     <div class="col d-flex flex-column gap-2">
+                        <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3 px-2" style="width: fit-content;">
+                           <i class="bi bi-kanban fs-3"></i>
+                        </div>
+                        <h4 class="fw-semibold mb-0 text-body-emphasis">Manage easily</h4>
+                        <p class="text-body-secondary">Navigate to your bulletin list to start reviewing resident complaints</p>
+                     </div>
+
+                     <div class="col d-flex flex-column gap-2">
+                        <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3 px-2" style="width: fit-content;">
+                           <i class="bi bi-pencil-square fs-3"></i>
+                        </div>
+                        <h4 class="fw-semibold mb-0 text-body-emphasis">Customize the system</h4>
+                        <p class="text-body-secondary">Edit what the user can see. Navigate to your Configuration Page to start reviewing resident complaints</p>
+                     </div>
+
+                     <div class="col d-flex flex-column gap-2">
+                        <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3 px-2" style="width: fit-content;">
+                           <i class="bi bi-three-dots fs-3"></i>
+                        </div>
+                        <h4 class="fw-semibold mb-0 text-body-emphasis">and more!</h4>
+                        <p class="text-body-secondary">Navigate to your sidebar to see what else you can do</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <?php include '../components/complaintsCounterv2.php' ?>
+      </div>
+   </section>
 </body>
 
 </html>

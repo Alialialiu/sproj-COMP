@@ -29,21 +29,21 @@ if ($resolved_complaints_query > 0) {
    <div class="row gap-3">
       <div class="col border border-2 d-flex align-items-center justify-content-between py-3">
          <h4 class="d-flex align-items-center">
-            <i class="bi bi-clipboard-data-fill me-3"></i>
+            <i class="bi bi-clipboard-data-fill me-3 text-primary"></i>
             Complaints
          </h4>
          <p class="p-0 m-0 fs-5"><?php echo $total_complaints ?></p>
       </div>
       <div class="col border border-2 d-flex align-items-center justify-content-between py-3">
          <h4 class="d-flex align-items-center">
-            <i class="bi bi-person-raised-hand me-3"></i>
+            <i class="bi bi-person-raised-hand me-3 text-primary"></i>
             Resolving
          </h4>
          <p class="p-0 m-0 fs-5"><?php echo $resolving_complaints ?></p>
       </div>
       <div class="col border border-2 d-flex align-items-center justify-content-between py-3">
          <h4 class="d-flex align-items-center">
-            <i class="bi bi-clipboard2-check-fill me-3"></i>
+            <i class="bi bi-clipboard2-check-fill me-3 text-primary"></i>
             Resolved
          </h4>
          <p class="p-0 m-0 fs-5"><?php echo $resolved_complaints ?></p>
